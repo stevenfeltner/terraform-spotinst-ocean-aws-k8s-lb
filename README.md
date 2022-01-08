@@ -1,23 +1,6 @@
-# [NAME] Terraform Module
+# Ocean AWS K8s Loadbalancer Terraform Module
 
-Short description of the module.
-
-## Table of Contents
-
-- [Prerequisites](#prerequisites)
-- [Usage](#usage)
-- [Examples](#examples)
-- [Requirements](#requirements)
-- [Providers](#providers)
-- [Modules](#modules)
-- [Resources](#resources)
-- [Inputs](#inputs)
-- [Outputs](#outputs)
-- [Documentation](#documentation)
-- [Getting Help](#getting-help)
-- [Community](#community)
-- [Contributing](#contributing)
-- [License](#license)
+Terraform module to aid in attaching and detaching loadbalancers to an existing Ocean cluster.
 
 ## Usage
 
