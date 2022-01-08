@@ -6,7 +6,7 @@ Terraform module to aid in attaching and detaching loadbalancers to an existing 
 
 ```hcl
 module "ocean_loadbalancer_attachment" {
-  source  = "stevenfeltner/ocean_loadbalancer_attachment/spotinst"
+  source  = "stevenfeltner/aws-k8s-lb/ocean"
   spotinst_token = "Redacted"
   spotinst_account = "Redacted"
   ocean_id = "o-123456"
