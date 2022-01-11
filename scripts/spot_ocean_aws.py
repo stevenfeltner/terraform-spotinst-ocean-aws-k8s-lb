@@ -3,7 +3,6 @@ import json
 import requests
 import os
 
-
 # from spotinst_sdk2 import SpotinstSession
 
 
@@ -21,13 +20,14 @@ def cli(ctx, *args, **kwargs):
 @click.argument('accountid', )
 @click.argument('token', )
 @click.pass_context
-def add(**kwargs):
+def add(ctx, *args, **kwargs):
     """Add a LoadBalancer to existing Ocean Cluster"""
-    debug = True
+
     loadbalancerarn = str(kwargs.get('loadbalancerarn'))
     cluster_id = str(kwargs.get('clusterid'))
     account_id = str(kwargs.get('accountid'))
     token = str(kwargs.get('token'))
+    # debug = True
 
     headers = {
         'Content-Type': 'application/json',
@@ -46,11 +46,11 @@ def add(**kwargs):
             items = data['response']['items']
             for x in items:
                 loadbalancers = x['compute']['launchSpecification']['loadBalancers']
-            if debug:
-                print("Ocean LoadBalancer List: ", loadbalancers)
+            # if debug:
+            print("Ocean LoadBalancer List: ", loadbalancers)
             loadbalancers.append({'arn': loadbalancerarn, 'type': 'TARGET_GROUP'})
-            if debug:
-                print("New appended Ocean LoadBalancer List: " ,loadbalancers)
+            # if debug:
+            print("New appended Ocean LoadBalancer List: ", loadbalancers)
             headers = {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
@@ -78,13 +78,14 @@ def add(**kwargs):
 @click.argument('accountid', )
 @click.argument('token', )
 @click.pass_context
-def delete(**kwargs):
+def delete(ctx, *args, **kwargs):
     """Delete a LoadBalancer from existing Ocean Cluster"""
-    debug = True
+
     loadbalancerarn = str(kwargs.get('loadbalancerarn'))
     cluster_id = str(kwargs.get('clusterid'))
     account_id = str(kwargs.get('accountid'))
     token = str(kwargs.get('token'))
+    # debug = True
 
     headers = {
         'Content-Type': 'application/json',
@@ -103,8 +104,8 @@ def delete(**kwargs):
             items = data['response']['items']
             for x in items:
                 loadbalancers = x['compute']['launchSpecification']['loadBalancers']
-            if debug:
-                print("Ocean LoadBalancer List: ", loadbalancers)
+            #if debug:
+            print("Ocean LoadBalancer List: ", loadbalancers)
 
             newloadbalancers = []
             for x in loadbalancers:
@@ -112,8 +113,8 @@ def delete(**kwargs):
                     pass
                 else:
                     newloadbalancers.append(x)
-            if debug:
-                print("New LoadBalancer List: ", newloadbalancers)
+            #if debug:
+            print("New LoadBalancer List: ", newloadbalancers)
             headers = {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
