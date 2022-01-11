@@ -17,9 +17,3 @@ variable "loadbalancerarn" {
   type        = string
   description = "ARN of the loadbalancer"
 }
-
-variable "debug" {
-  type        = bool
-  default     = false
-  description = "Enable debuging output"
-}

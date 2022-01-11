@@ -16,15 +16,14 @@ def cli(ctx, *args, **kwargs):
 
 
 @cli.command()
-@click.option('--debug', is_flag=True, default=False, type=bool)
 @click.argument('loadbalancerarn', )
 @click.argument('clusterid', )
 @click.argument('accountid', )
 @click.argument('token', )
 @click.pass_context
-def add(debug, **kwargs):
+def add(**kwargs):
     """Add a LoadBalancer to existing Ocean Cluster"""
-
+    debug = True
     loadbalancerarn = str(kwargs.get('loadbalancerarn'))
     cluster_id = str(kwargs.get('clusterid'))
     account_id = str(kwargs.get('accountid'))
@@ -78,10 +77,10 @@ def add(debug, **kwargs):
 @click.argument('clusterid', )
 @click.argument('accountid', )
 @click.argument('token', )
-@click.option('--debug', is_flag=True, default=False, type=bool)
 @click.pass_context
-def delete(debug, *args, **kwargs):
+def delete(**kwargs):
     """Delete a LoadBalancer from existing Ocean Cluster"""
+    debug = True
     loadbalancerarn = str(kwargs.get('loadbalancerarn'))
     cluster_id = str(kwargs.get('clusterid'))
     account_id = str(kwargs.get('accountid'))
