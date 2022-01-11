@@ -31,11 +31,11 @@ resource "null_resource" "ocean_loadbalancer_attachment_debug" {
   }
   provisioner "local-exec" {
     interpreter = ["/bin/bash", "-c"]
-    command = "${self.triggers.cmd} add ${self.triggers.loadbalancerarn} ${self.triggers.ocean_id} ${self.triggers.account_id} ${self.triggers.token} --debug"
+    command = "${self.triggers.cmd} add --debug ${self.triggers.loadbalancerarn} ${self.triggers.ocean_id} ${self.triggers.account_id} ${self.triggers.token}"
   }
   provisioner "local-exec" {
     when = destroy
     interpreter = ["/bin/bash", "-c"]
-    command = "${self.triggers.cmd} delete ${self.triggers.loadbalancerarn} ${self.triggers.ocean_id} ${self.triggers.account_id} ${self.triggers.token} --debug"
+    command = "${self.triggers.cmd} delete --debug ${self.triggers.loadbalancerarn} ${self.triggers.ocean_id} ${self.triggers.account_id} ${self.triggers.token}"
   }
 }

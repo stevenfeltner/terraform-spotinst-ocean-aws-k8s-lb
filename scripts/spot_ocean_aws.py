@@ -16,13 +16,13 @@ def cli(ctx, *args, **kwargs):
 
 
 @cli.command()
+@click.option('--debug', is_flag=True, default=False, type=bool)
 @click.argument('loadbalancerarn', )
 @click.argument('clusterid', )
 @click.argument('accountid', )
 @click.argument('token', )
-@click.option('--debug', is_flag=True, default=False, type=bool)
 @click.pass_context
-def add(debug, *args, **kwargs):
+def add(debug, **kwargs):
     """Add a LoadBalancer to existing Ocean Cluster"""
 
     loadbalancerarn = str(kwargs.get('loadbalancerarn'))
