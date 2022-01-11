@@ -20,7 +20,7 @@ resource "null_resource" "ocean_loadbalancer_attachment" {
 }
 
 
-resource "null_resource" "ocean_loadbalancer_attachment" {
+resource "null_resource" "ocean_loadbalancer_attachment_debug" {
   count = var.debug ? 1 : 0
   triggers = {
     cmd = "${path.module}/scripts/spot-ocean-aws"
