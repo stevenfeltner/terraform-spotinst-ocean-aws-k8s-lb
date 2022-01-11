@@ -20,7 +20,7 @@ def cli(ctx, *args, **kwargs):
 @click.argument('clusterid', )
 @click.argument('accountid', )
 @click.argument('token', )
-@click.option('--debug', default=False, type=bool)
+@click.option('--debug', is_flag=True, default=False, type=bool)
 @click.pass_context
 def add(debug, *args, **kwargs):
     """Add a LoadBalancer to existing Ocean Cluster"""
@@ -78,7 +78,7 @@ def add(debug, *args, **kwargs):
 @click.argument('clusterid', )
 @click.argument('accountid', )
 @click.argument('token', )
-@click.option('--debug', default=False, type=bool)
+@click.option('--debug', is_flag=True, default=False, type=bool)
 @click.pass_context
 def delete(debug, *args, **kwargs):
     """Delete a LoadBalancer from existing Ocean Cluster"""
