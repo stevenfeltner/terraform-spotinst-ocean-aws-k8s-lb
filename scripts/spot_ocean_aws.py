@@ -3,6 +3,7 @@ import json
 import requests
 import os
 
+
 # from spotinst_sdk2 import SpotinstSession
 
 
@@ -45,7 +46,10 @@ def add(ctx, *args, **kwargs):
             loadbalancers = []
             items = data['response']['items']
             for x in items:
-                loadbalancers = x['compute']['launchSpecification']['loadBalancers']
+                try:
+                    loadbalancers = x['compute']['launchSpecification']['loadBalancers']
+                except:
+                    loadbalancers = []
             # if debug:
             print("Ocean LoadBalancer List: ", loadbalancers)
             loadbalancers.append({'arn': loadbalancerarn, 'type': 'TARGET_GROUP'})
@@ -103,8 +107,11 @@ def delete(ctx, *args, **kwargs):
             loadbalancers = []
             items = data['response']['items']
             for x in items:
-                loadbalancers = x['compute']['launchSpecification']['loadBalancers']
-            #if debug:
+                try:
+                    loadbalancers = x['compute']['launchSpecification']['loadBalancers']
+                except:
+                    loadbalancers = []
+            # if debug:
             print("Ocean LoadBalancer List: ", loadbalancers)
 
             newloadbalancers = []
@@ -113,7 +120,7 @@ def delete(ctx, *args, **kwargs):
                     pass
                 else:
                     newloadbalancers.append(x)
-            #if debug:
+            # if debug:
             print("New LoadBalancer List: ", newloadbalancers)
             headers = {
                 'Content-Type': 'application/json',
