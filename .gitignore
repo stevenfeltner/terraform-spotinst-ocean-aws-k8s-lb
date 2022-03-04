@@ -13,3 +13,6 @@ terraform.tfvars
 
 # jetbrains
 .idea
+/test/
+/scripts/spot_ocean_aws.egg-info/
+/scripts/__pycache__/

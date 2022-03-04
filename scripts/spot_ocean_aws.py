@@ -1,9 +1,6 @@
 import click
 import json
 import requests
-import time
-
-
 # from spotinst_sdk2 import SpotinstSession
 
 
@@ -35,7 +32,7 @@ def add(ctx, *args, **kwargs):
         'Authorization': 'Bearer ' + token
     }
     url = 'https://api.spotinst.io/ocean/aws/k8s/cluster/' + cluster_id + '/loadBalancer/attach?accountId=' + account_id
-    data = {"loadBalancers": [{"arn": loadbalancerarn}]}
+    data = {"loadBalancers": [{"type": "TARGET_GROUP", "arn": loadbalancerarn}]}
     try:
         r = requests.put(url, headers=headers, json=data)
         data = json.loads(r.text)
@@ -67,7 +64,7 @@ def delete(ctx, *args, **kwargs):
         'Authorization': 'Bearer ' + token
     }
     url = 'https://api.spotinst.io/ocean/aws/k8s/cluster/' + cluster_id + '/loadBalancer/detach?accountId=' + account_id
-    data = {"loadBalancers": [{"arn":loadbalancerarn}]}
+    data = {"loadBalancers": [{"type": "TARGET_GROUP", "arn": loadbalancerarn}]}
 
     try:
         r = requests.put(url, headers=headers, json=data)
